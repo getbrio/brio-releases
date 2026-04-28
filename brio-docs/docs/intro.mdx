@@ -1,47 +1,65 @@
 ---
 sidebar_position: 1
+slug: /
 ---
 
-# Tutorial Intro
+# Welcome to BRIO
 
-Let's discover **Docusaurus in less than 5 minutes**.
+**BRIO is the AI dev tool for robotics engineers.**
 
-## Getting Started
+It connects to your live ROS 2 environment, reads your active topic graph,
+transform tree, diagnostics, and hardware constraints, and reasons about
+your robot the way a senior teammate would — then writes, builds, and
+verifies code that runs on the actual machine.
 
-Get started by **creating a new site**.
+## What BRIO does
 
-Or **try Docusaurus immediately** with **[docusaurus.new](https://docusaurus.new)**.
+- **Sees your robot, not just your code.** BRIO snapshots your live
+  workspace — TF tree, node list, `/diagnostics`, custom message types —
+  and feeds that state to a Claude-powered supervisor agent.
+- **Knows your hardware by name.** Jetson power envelope, carrier-board
+  specs, sensor constraints, latency budgets. Generic AI doesn't know
+  your 5V PAB requirement. BRIO does.
+- **Ships code that builds first try.** Nodes with correct message types
+  and QoS, launch files wired to your package, package config that
+  matches your stack — generated, built, and verified against your real
+  workspace.
 
-### What you'll need
+## How it's put together
 
-- [Node.js](https://nodejs.org/en/download/) version 20.0 or above:
-  - When installing Node.js, you are recommended to check all checkboxes related to dependencies.
+BRIO is two pieces:
 
-## Generate a new site
+| Piece | Where it runs | What it does |
+| --- | --- | --- |
+| **`brio` CLI** | Operator workstation (macOS / Linux) | 3-zone TUI. Sends queries to the cloud, executes agent tool calls (`bash` / `read_file` / `write_file`) locally over MCP/SSE. |
+| **Cloud API** | `api.getbrio.org` | Hosts the supervisor agent (with explorer + coder sub-agents), handles auth, billing, and per-user API keys. |
 
-Generate a new Docusaurus site using the **classic template**.
+A Jetson-side ROS 2 node can optionally stream live `RobotState`
+(TF + diagnostics + node list) into the same session so the agent
+reasons over what your robot is *actually* doing, not what your code
+says it should.
 
-The classic template will automatically be added to your project after you run the command:
-
-```bash
-npm init docusaurus@latest my-website classic
+```
+┌────────────────────┐       RobotState + query        ┌─────────────────────┐
+│ Jetson ROS 2 node  │ ──────────────────────────────▶ │  BRIO cloud API     │
+│ TF / diagnostics   │ ◀──── streamed agent reply ──── │  Claude supervisor  │
+└────────────────────┘                                 └─────────┬───────────┘
+                                                                 │ MCP / SSE
+                                                                 ▼
+                                                       ┌─────────────────────┐
+                                                       │ brio CLI (operator) │
+                                                       │ bash / read / write │
+                                                       └─────────────────────┘
 ```
 
-You can type this command into Command Prompt, Powershell, Terminal, or any other integrated terminal of your code editor.
+## Who it's for
 
-The command also installs all necessary dependencies you need to run Docusaurus.
+Robotics engineers who are done losing days to problems that shouldn't
+take days — solo engineers shipping client projects, teams that want
+the velocity web devs take for granted, anyone tired of `Build → Launch
+→ Observe` for every line change.
 
-## Start your site
+## Next
 
-Run the development server:
-
-```bash
-cd my-website
-npm run start
-```
-
-The `cd` command changes the directory you're working with. In order to work with your newly created Docusaurus site, you'll need to navigate the terminal there.
-
-The `npm run start` command builds your website locally and serves it through a development server, ready for you to view at http://localhost:3000/.
-
-Open `docs/intro.md` (this page) and edit some lines: the site **reloads automatically** and displays your changes.
+- [Install the CLI](./installation.md) — one-line install for macOS and Linux.
+- [Configure your account](./configuration.md) — sign in, plans, robot IDs, env overrides.
