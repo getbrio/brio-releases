@@ -4,7 +4,7 @@ sidebar_position: 3
 
 # Configuration
 
-After [installing the CLI](./installation.md), you need to (1) have an
+After [installing the CLI](./installation), you need to (1) have an
 active BRIO subscription and (2) approve the CLI as a device on your
 account.
 

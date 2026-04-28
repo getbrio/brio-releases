@@ -96,5 +96,5 @@ rm -rf ~/.config/brio
 
 ## Next
 
-Head to [Configuration](./configuration.md) to sign in and approve your
+Head to [Configuration](./configuration) to sign in and approve your
 device.
