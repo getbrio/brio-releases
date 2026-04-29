@@ -1,0 +1,30 @@
+/**
+ * Any CSS included here will be global. The classic template
+ * bundles Infima by default. Infima is a CSS framework designed to
+ * work well for content-centric websites.
+ */
+
+/* BRIO brand orange — #C15F3C */
+:root {
+  --ifm-color-primary: #c15f3c;
+  --ifm-color-primary-dark: #ae5536;
+  --ifm-color-primary-darker: #a55033;
+  --ifm-color-primary-darkest: #87422a;
+  --ifm-color-primary-light: #c76c4c;
+  --ifm-color-primary-lighter: #cb7456;
+  --ifm-color-primary-lightest: #d48870;
+  --ifm-code-font-size: 95%;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+}
+
+/* Lighter tint of the brand for dark mode readability. */
+[data-theme='dark'] {
+  --ifm-color-primary: #d57759;
+  --ifm-color-primary-dark: #cf6a4a;
+  --ifm-color-primary-darker: #cb6440;
+  --ifm-color-primary-darkest: #a85234;
+  --ifm-color-primary-light: #db8568;
+  --ifm-color-primary-lighter: #de8c71;
+  --ifm-color-primary-lightest: #e6a48f;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+}
