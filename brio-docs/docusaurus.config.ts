@@ -85,8 +85,8 @@ const config: Config = {
           title: 'Docs',
           items: [
             {label: 'Welcome', to: '/'},
-            {label: 'Installation', to: '/installation'},
-            {label: 'Configuration', to: '/configuration'},
+            {label: 'Installation', to: '/docs/installation'},
+            {label: 'Configuration', to: '/docs/configuration'},
           ],
         },
         {
