@@ -51,7 +51,7 @@ shouldn't take days:
 Install the CLI in one line:
 
 ```bash
-curl -fsSL https://github.com/getbrio/brio-releases/releases/latest/download/install.sh | bash
+curl -fsSL https://getbrio.dev/install.sh | bash
 ```
 
 Then head to **[Installation](/docs/installation)** for platform notes

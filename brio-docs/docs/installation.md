@@ -17,7 +17,7 @@ workstation.
 ## One-line install (recommended)
 
 ```bash
-curl -fsSL https://github.com/getbrio/brio-releases/releases/latest/download/install.sh | bash
+curl -fsSL https://getbrio.dev/install.sh | bash
 ```
 
 The installer:
@@ -39,7 +39,7 @@ To install into a system path (e.g. `/usr/local/bin`) for all users on
 the machine:
 
 ```bash
-curl -fsSL https://github.com/getbrio/brio-releases/releases/latest/download/install.sh | bash -s -- --system
+curl -fsSL https://getbrio.dev/install.sh | bash -s -- --system
 ```
 
 This requires `sudo`.
@@ -83,7 +83,7 @@ runs are unblocked.
 Re-running the installer always pulls the latest release:
 
 ```bash
-curl -fsSL https://github.com/getbrio/brio-releases/releases/latest/download/install.sh | bash
+curl -fsSL https://getbrio.dev/install.sh | bash
 ```
 
 ## Uninstall
