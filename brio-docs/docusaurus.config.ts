@@ -14,7 +14,7 @@ const config: Config = {
     v4: true, // Improve compatibility with the upcoming Docusaurus v4
   },
 
-  url: 'https://docs.getbrio.org',
+  url: 'https://docs.getbrio.dev',
   baseUrl: '/',
 
   onBrokenLinks: 'throw',
