@@ -10,15 +10,13 @@ prompt the `brio` CLI emits.
 ## Command-line flags
 
 ```bash
-brio [--url URL] [--robot-id ID] [--yolo] [--continue] [-v] [--prod]
+brio [--yolo] [--continue] [-v] [--prod]
 brio login [--no-browser]
 brio logout
 ```
 
 | Flag | Default | Purpose |
 | --- | --- | --- |
-| `--url` | `https://api.getbrio.org` (or `$BRIO_API_URL`) | Cloud API endpoint. Useful for staging. |
-| `--robot-id` | `dev-robot` (or `$BRIO_ROBOT_ID`) | Robot identifier. Pairs your CLI session with a `RobotState` stream from the same id. |
 | `--yolo` | off | Auto-approve every tool call. Skips all `bash` / `read_file` / `write_file` prompts. |
 | `--continue` | off | Print the previous session transcript above the prompt at startup. |
 | `-v`, `--verbose` | off | Mirror loguru output to stderr. Logs always go to `~/.brio.log` regardless. |
@@ -40,7 +38,7 @@ Type a `/` in the input row and the spinner row above it shows matches.
 | --- | --- |
 | `/help` | List commands. |
 | `/usage` | Token usage since process start: fresh / cache-write / cache-read input tokens, output tokens, request count, tool-call count. |
-| `/reset` | Delete the cloud session for this `robot-id` *and* zero local usage counters. Use between unrelated tasks. |
+| `/reset` | Delete the current cloud session *and* zero local usage counters. Use between unrelated tasks. |
 | `/quit` | Exit (same as `Ctrl-D` or typing `exit` / `quit`). |
 
 ## Keybindings

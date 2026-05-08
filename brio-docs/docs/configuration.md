@@ -46,7 +46,6 @@ brio logout
 
 ```bash
 brio                              # uses saved config
-brio --robot-id lab-bot-1         # override robot id for this session
 brio --yolo                       # auto-approve all agent tool calls
 ```
 
@@ -66,18 +65,13 @@ These environment variables, if set in your shell, take precedence over
 
 | Variable | Purpose |
 | --- | --- |
-| `BRIO_API_URL` | Override the cloud API endpoint (defaults to `https://api.getbrio.org`). |
 | `BRIO_API_KEY` | Use a different API key for this shell session. |
-| `BRIO_ROBOT_ID` | Default robot identifier when `--robot-id` is not passed. |
-
-Useful for switching between staging and prod without re-running
-`brio login`, or for scoping a single shell to a different robot.
 
 ## Configuration files
 
 | Path | Contents |
 | --- | --- |
-| `~/.config/brio/config.env` | API URL + API key, written by `brio login` (mode `0600`). |
+| `~/.config/brio/config.env` | API key, written by `brio login` (mode `0600`). |
 | `.env.local` (cwd) | Dev override — read when running BRIO from a workspace checkout. Ignored by release binaries unless explicitly loaded. |
 
 ## Optional: ROS 2 state collector
@@ -91,9 +85,7 @@ Set these on the Jetson before launching the node:
 
 | Variable | Purpose |
 | --- | --- |
-| `BRIO_API_URL` | Cloud API endpoint. |
 | `BRIO_API_KEY` | API key — same one minted by `brio login`. |
-| `BRIO_ROBOT_ID` | Robot identifier; must match the `--robot-id` your CLI session uses. |
 
 Installation of the ROS 2 node is out of scope for the CLI installer —
 it ships separately as an `ament_python` package.

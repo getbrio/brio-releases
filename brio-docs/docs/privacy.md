@@ -9,17 +9,15 @@ machine. This page is the explicit list of what crosses that boundary.
 
 ## What leaves your machine
 
-Everything sent to the BRIO API is over TLS to `api.getbrio.org` (or
-the `--url` you configure), authenticated with the API key in
-`~/.config/brio/config.env`.
+Everything sent to the BRIO API is over TLS to `api.getbrio.org`,
+authenticated with the API key in `~/.config/brio/config.env`.
 
 ### When you submit a prompt
 
 `POST /v1/debug` with:
 
 - the prompt text you typed,
-- your `robot_id` (used as the cloud session key),
-- a `RobotState` snapshot — `robot_id`, `ros2_distro`, TF transforms,
+- a `RobotState` snapshot — `ros2_distro`, TF transforms,
   diagnostics, ROS 2 node names. The CLI itself sends an **empty**
   state by default; populated state only flows in if you also run the
   optional Jetson ROS 2 collector node.
@@ -68,7 +66,7 @@ These are local-only. We never read them.
 - The config file has mode `0600`. Don't `cat` it into pastebins, and
   don't commit it.
 - Environment variables (`BRIO_API_KEY`) override the config file —
-  useful for keeping a separate staging key in your shell, or for CI.
+  useful for CI or for scoping a key to a single shell.
 
 ## What `--yolo` actually skips
 
@@ -117,6 +115,6 @@ should apply to any cloud AI tool applies here:
 - **Don't use `--yolo` on machines with secrets you haven't audited.**
   It's fine on a disposable workspace; it's a mistake on your daily
   driver.
-- **For air-gapped or VPC-resident requirements**, point `--url` at a
-  private deployment. Contact us if that's a hard requirement for
-  your engagement.
+- **For air-gapped or VPC-resident requirements**, contact us — the
+  default endpoint won't work for you and we'll need to set up a
+  private deployment.
