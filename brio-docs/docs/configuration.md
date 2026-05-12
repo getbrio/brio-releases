@@ -12,7 +12,7 @@ account.
 
 Create an account and pick a plan at
 [getbrio.org](https://getbrio.org). The CLI **cannot** sign in or issue
-API keys until your account is on the **Pro** or **Max** plan — the
+API keys until your account is on the **Starter**, **Pro**, or **Max** plan — the
 device-approval flow will refuse the request and prompt you to
 subscribe.
 
@@ -71,29 +71,14 @@ These environment variables, if set in your shell, take precedence over
 
 | Path | Contents |
 | --- | --- |
-| `~/.config/brio/config.env` | API key, written by `brio login` (mode `0600`). |
+| `~/.config/brio/config.env` | API key + API URL, written by `brio login` (mode `0600`). |
+| `~/.local/share/brio/logs/{date}/{session_id}.log` | Per-session JSON log (loguru). Always written. |
 | `.env.local` (cwd) | Dev override — read when running BRIO from a workspace checkout. Ignored by release binaries unless explicitly loaded. |
-
-## Optional: ROS 2 state collector
-
-If you want the agent to reason over live robot state, run the
-companion ROS 2 node on your Jetson (or any machine on the robot's ROS
-graph). It collects TF, `/diagnostics`, and the node list and POSTs
-`RobotState` to the same cloud API your CLI session is attached to.
-
-Set these on the Jetson before launching the node:
-
-| Variable | Purpose |
-| --- | --- |
-| `BRIO_API_KEY` | API key — same one minted by `brio login`. |
-
-Installation of the ROS 2 node is out of scope for the CLI installer —
-it ships separately as an `ament_python` package.
 
 ## Troubleshooting
 
 **"Subscription required" when approving the CLI.** Your account has
-no active Pro/Max plan. Visit the dashboard and subscribe, then retry
+no active Starter/Pro/Max plan. Visit the dashboard and subscribe, then retry
 `brio login`.
 
 **`brio: command not found`** after install. `~/.local/bin` is not on

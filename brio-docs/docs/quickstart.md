@@ -4,8 +4,8 @@ sidebar_position: 4
 
 # Quickstart
 
-From zero to your first BRIO session in five minutes. Assumes a Pro or
-Max subscription on your account already.
+From zero to your first BRIO session in five minutes. Assumes a
+Starter, Pro, or Max subscription on your account already.
 
 ## 1. Install
 
@@ -79,23 +79,28 @@ seconds the agent will request to run a tool — typically `bash` (e.g.
 The spinner row turns into an approval prompt:
 
 ```
-▸ approve bash: ls src/? [y]es / [n]o / [a]lways bash / [d]eny all bash / [A]ll session
+▸ approve list_dir: src? [y]es / [n]o / [a]lways list_dir / [d]eny all list_dir / [A]ll session
 ```
 
-Press **`y`** to approve just this call.
+Press **`y`** to approve just this call. If the tool touches a path
+outside your startup `cwd` (e.g. `/opt/ros/humble`) a second prompt
+fires for that directory — `a` there is recursive and persists for
+the session.
 
 After a couple of approve cycles the agent emits its final reply,
 rendered as Markdown between `──── brio ────` separators.
 
-**Tip.** Use **`a`** the second time you see a `bash` prompt to
-auto-approve all `bash` calls for this session, and **`A`** to
-auto-approve everything. Or pass `--yolo` at startup to skip prompts
-entirely.
+**Tip.** Use **`a`** the second time you see a verb prompt to
+auto-approve that tool type for the session, and **`A`** for every
+type. Or pass `--yolo` at startup to bypass both gates entirely.
 
 ## 6. Wrap up
 
-- `/usage` — token spend so far this session
-- `/reset` — wipe agent memory and zero counters before a new task
+- `/usage` — token spend this process + the 5h rolling-window snapshot
+- `/clear` — drop history but keep the session id and token totals
+- `/compact [focus]` — summarize history into one block (Haiku-backed)
+- `/reset` — wipe the cloud session and zero local counters
+- `/sendlogs` — upload this session's log to support
 - `Ctrl-D` (or type `exit`) — quit
 
 Next session, run `brio --continue` to see the previous transcript
@@ -104,6 +109,4 @@ above the prompt.
 ## Where to next
 
 - [Usage & commands](./usage) — every flag, key, and slash command.
-- [Privacy & data handling](./privacy) — what leaves your machine.
-- [Configuration](./configuration) — env overrides and the ROS 2
-  state collector.
+- [Configuration](./configuration) — sign-in, env overrides, troubleshooting.

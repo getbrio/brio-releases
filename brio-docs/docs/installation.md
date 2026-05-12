@@ -89,9 +89,11 @@ curl -fsSL https://getbrio.dev/install.sh | bash
 ## Uninstall
 
 ```bash
-rm ~/.local/bin/brio          # or /usr/local/bin/brio for system installs
-brio logout                    # before removing the binary, to clear saved config
-rm -rf ~/.config/brio
+brio logout                       # before removing the binary, to clear saved config
+rm ~/.local/bin/brio              # or /usr/local/bin/brio for system installs
+rm -rf ~/.config/brio             # API key + URL
+rm -rf ~/.local/share/brio        # per-session logs
+rm -f ~/.brio_history ~/.brio_last_session ~/.brio_last_session_id
 ```
 
 ## Next
